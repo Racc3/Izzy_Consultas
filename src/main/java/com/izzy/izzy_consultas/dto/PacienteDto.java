@@ -11,6 +11,5 @@ public class PacienteDto {
 
     private Long pacienteId;
     private String nomeDePaciente;
-    private String email;
-    private String senha;
+
 }

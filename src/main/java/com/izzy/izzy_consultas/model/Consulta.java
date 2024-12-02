@@ -2,6 +2,8 @@ package com.izzy.izzy_consultas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.izzy.izzy_consultas.dto.ConsultaDto;
+import com.izzy.izzy_consultas.dto.PacienteDto;
+import com.izzy.izzy_consultas.dto.ProfissionalDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
-
 @Entity
 @Data
 @Table(name = "consultas")
@@ -26,16 +27,14 @@ public class Consulta {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "paciente_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Paciente paciente;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profissional_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Profissional profissional;
 
-    // Método para converter Consulta em ConsultaDto
+    // Método para converter Consulta em ConsultaDTO
     public ConsultaDto toDto() {
         ConsultaDto consultaDto = new ConsultaDto();
         consultaDto.setId(consultaId);

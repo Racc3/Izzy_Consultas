@@ -12,6 +12,5 @@ public class ProfissionalDto {
     private Long profissionalId;
     private String email;
     private String nomeDoProfissional;
-    private String senha;
-    private String especialidade;
+
 }
