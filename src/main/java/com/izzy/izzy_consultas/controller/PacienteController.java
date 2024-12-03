@@ -47,4 +47,14 @@ public class PacienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Paciente>> buscarPacientes(@RequestParam String keyword) {
+        List<Paciente> pacientes = pacienteService.buscarPorNomeOuEmail(keyword);
+        if (pacientes.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(pacientes);
+        }
+    }
 }

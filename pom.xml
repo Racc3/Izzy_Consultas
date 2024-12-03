@@ -8,10 +8,10 @@
 		<version>3.2.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.fujideia.iesp</groupId>
-	<artifactId>tecback</artifactId>
+	<groupId>com.izzy</groupId>
+	<artifactId>izzy_consultas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tecback</name>
+	<name>demo</name>
 	<description>Uma aplicação para marcação de consultas médicas</description>
 	<url/>
 	<licenses>
@@ -32,6 +32,11 @@
 
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
