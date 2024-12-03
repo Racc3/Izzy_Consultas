@@ -1,5 +1,6 @@
 package com.izzy.izzy_consultas.controller;
 
+import com.izzy.izzy_consultas.model.Paciente;
 import com.izzy.izzy_consultas.model.Profissional;
 import com.izzy.izzy_consultas.service.ProfissionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,26 @@ public class ProfissionalController {
     @GetMapping
     public ResponseEntity<List<Profissional>> listarProfissionais() {
         return ResponseEntity.ok(profissionalService.listarProfissionais());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Profissional> atualizarProfissional(@PathVariable Long id, @RequestBody Profissional profissionalAtualizado) {
+        Profissional profissional = profissionalService.atualizarProfissional(id, profissionalAtualizado);
+        if (profissional != null) {
+            return ResponseEntity.ok(profissional);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    // Método para excluir um profissional
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluirProfissional(@PathVariable Long id) {
+        boolean excluido = profissionalService.excluirProfissional(id);
+        if (excluido) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

@@ -25,4 +25,26 @@ public class PacienteController {
     public ResponseEntity<List<Paciente>> listarPacientes() {
         return ResponseEntity.ok(pacienteService.listarPacientes());
     }
+
+    // Método para atualizar um paciente existente
+    @PutMapping("/{id}")
+    public ResponseEntity<Paciente> atualizarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
+        Paciente paciente = pacienteService.atualizarPaciente(id, pacienteAtualizado);
+        if (paciente != null) {
+            return ResponseEntity.ok(paciente);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    // Método para excluir um paciente
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluirPaciente(@PathVariable Long id) {
+        boolean excluido = pacienteService.excluirPaciente(id);
+        if (excluido) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
