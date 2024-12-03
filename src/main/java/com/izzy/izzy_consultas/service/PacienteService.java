@@ -40,4 +40,7 @@ public class PacienteService {
         }
         return false;
     }
+    public List<Paciente> buscarPorNomeOuEmail(String keyword) {
+        return pacienteRepository.buscarPorNomeOuEmail(keyword);
+    }
 }
